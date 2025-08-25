@@ -1,23 +1,21 @@
 import sys
 
-def sort_list(words, eliminar_duplicados=False):
-    if eliminar_duplicados:
+def sort_list(words, remove_duplicates=False):
+    if remove_duplicates:
         words = list(set(words))
     return sorted(words)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Por favor, introduce una lista de palabras separadas por espacios.")
+        print("Please enter a list of words separated by spaces.")
         sys.exit(1)
 
-    # Detecta si se pasó la opción --sin-duplicados
-    eliminar_duplicados = "--sin-duplicados" in sys.argv
+    remove_duplicates = "--no-duplicates" in sys.argv
 
-    # Filtra las palabras, eliminando argumentos con --
-    palabras = [arg for arg in sys.argv[1:] if not arg.startswith("--")]
+    words = [arg for arg in sys.argv[1:] if not arg.startswith("--")]
 
-    ordenadas = sort_list(palabras, eliminar_duplicados)
+    sorted_words = sort_list(words, remove_duplicates)
 
-    print("Palabras ordenadas:")
-    for palabra in ordenadas:
-        print(palabra)
+    print("Sorted words:")
+    for word in sorted_words:
+        print(word)
